@@ -123,4 +123,5 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
+    'use_mock_stock_service' => env('USE_MOCK_STOCK_SERVICE', false),
 ];
