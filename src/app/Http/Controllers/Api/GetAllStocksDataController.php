@@ -20,7 +20,6 @@ class GetAllStocksDataController extends Controller
         $stockData = $this->fetchAllStocksPriceService->fetchAllStocksData();
 
         return response()->json([
-            //'data' => $stockData['Global Quote']['05. price']
             'data' => $stockData
         ]);
     }
