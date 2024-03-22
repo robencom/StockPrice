@@ -7,19 +7,19 @@
             <table class="table table-bordered w-75">
                 <thead class="thead-light">
                 <tr>
-                    <th scope="col">Symbol</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">Previous Price</th>
-                    <th scope="col">Change</th>
+                    <th class="text-center" scope="col">Symbol</th>
+                    <th class="text-center" scope="col">Current Price</th>
+                    <th class="text-center" scope="col">Previous Price</th>
+                    <th class="text-center" scope="col">Change</th>
                 </tr>
                 </thead>
                 <tbody>
                 @foreach ($stocks as $stock)
                     <tr>
-                        <td>{{ $stock['symbol'] }}</td>
-                        <td>{{ $stock['price'] }}</td>
-                        <td>{{ $stock['previous_price'] }}</td>
-                        <td>
+                        <td class="text-center">{{ $stock['symbol'] }}</td>
+                        <td class="text-center">{{ $stock['price'] }}</td>
+                        <td class="text-center">{{ $stock['previous_price'] }}</td>
+                        <td class="text-center">
                             @if ($stock['percentage_change'] > 0)
                                 <span class="text-success">
                                 <i class="fas fa-arrow-up"></i> {{ number_format($stock['percentage_change'], 2) }}%

@@ -24,6 +24,10 @@ th, td {
     padding: 10px;
 }
 
+.text-center {
+    text-align: center;
+}
+
 /* Adjustments for arrow size and color */
 .fa-arrow-up { color: green; }
 .fa-arrow-down { color: red; }
