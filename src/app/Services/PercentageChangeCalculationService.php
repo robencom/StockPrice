@@ -17,6 +17,8 @@ class PercentageChangeCalculationService
             return 0;
         }
 
-        return (($currentPrice - $previousPrice) / $previousPrice) * 100;
+        $percentageChange = (($currentPrice - $previousPrice) / $previousPrice) * 100;
+
+        return number_format($percentageChange, 4, '.', '');
     }
 }

@@ -4,8 +4,6 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Services\FetchAllStocksPriceService;
-use Illuminate\Http\Request;
-use App\Services\FetchStockPriceService;
 use Illuminate\Http\JsonResponse;
 
 class GetAllStocksDataController extends Controller

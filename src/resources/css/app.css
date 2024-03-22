@@ -1,0 +1,29 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Arial', sans-serif;
+}
+
+.container {
+    width: 80%;
+    max-width: 800px;
+}
+
+.table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: separate;
+    border-spacing: 0 15px;
+}
+
+th, td {
+    text-align: center;
+    padding: 10px;
+}
+
+/* Adjustments for arrow size and color */
+.fa-arrow-up { color: green; }
+.fa-arrow-down { color: red; }
