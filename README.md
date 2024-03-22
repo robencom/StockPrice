@@ -37,9 +37,6 @@ php artisan test
 ```
 
 ## Design Decisions
-tba
-
-## Design Decisions
 The application's database schema is designed for efficient storage and retrieval of stock price data. Key optimizations include:
 
 - **Indexing**: Indexes on `symbol` in the `stocks` table and `stock_id` in the `stock_prices` table ensure fast queries, especially beneficial for large datasets.
