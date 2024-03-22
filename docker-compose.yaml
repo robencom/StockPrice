@@ -79,8 +79,7 @@ services:
       - ./docker/php/local.ini:/usr/local/etc/php/conf.d/local.ini
     command: php artisan schedule:work
     depends_on:
-      app:
-        condition: service_completed_successfully
+      - app
     networks:
       - app-network
 
