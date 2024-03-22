@@ -53,6 +53,24 @@ To optimize the application's performance, caching is utilized for storing the l
 
 Real-time stock price data is fetched from the Alpha Vantage API, with robust error handling and rate limit management to ensure reliable data retrieval.
 
+## API Documentation
+
+This project uses L5 Swagger to generate interactive API documentation.
+
+## Generating the Documentation
+
+To generate the API documentation, run:
+
+```
+php artisan l5-swagger:generate
+```
+
+## Viewing the Documentation
+Once generated, the API documentation can be accessed at:
+```
+http://localhost:8000/api/documentation
+```
+
 ## Deployment
 
 This application follows standard Laravel deployment practices. For detailed instructions on deploying Laravel applications, refer to the official [Laravel deployment documentation](https://laravel.com/docs/deployment).

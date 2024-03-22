@@ -20,3 +20,5 @@ yarn-error.log
 /.composer
 /.config
 .lesshst
+/storage/api-docs/
+/resources/views/vendor/l5-swagger/
