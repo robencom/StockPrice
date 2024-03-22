@@ -17,7 +17,7 @@ class GetStockDataController extends Controller
     public function __invoke(Request $request): JsonResponse
     {
         $validated = $request->validate([
-            'symbol' => 'required|exists:stocks,name',
+            'symbol' => 'required|exists:stocks,symbol',
         ]);
 
         $stockSymbol = $validated['symbol'];

@@ -20,10 +20,12 @@ class FetchAllStocksPriceService
 
         foreach ($stocks as $stock) {
             $data = $this->fetchStockPriceService->fetchStockData($stock->name);
+
             if (!empty($data)) {
                 $stocksData[] = [
-                    'symbol' => $stock->name,
-                    'data' => $data,
+                    'symbol' => $stock->symbol,
+                    'price' => $data["price"],
+                    'previous_price' => $data["previous_close"],
                 ];
             }
         }

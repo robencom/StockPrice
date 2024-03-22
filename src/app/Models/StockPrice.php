@@ -14,6 +14,12 @@ class StockPrice extends Model
 
     protected $keyType = 'uuid';
 
+    protected $fillable = [
+        'stock_id',
+        'price',
+        'previous_price',
+    ];
+
     public function stock(): BelongsTo
     {
         return $this->belongsTo(Stock::class);

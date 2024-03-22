@@ -2,8 +2,10 @@
 
 namespace App\Console\Commands;
 
+use App\Actions\StockPrices\StoreStockPriceAction;
 use App\Services\FetchAllStocksPriceService;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Log;
 
 class FetchStockData extends Command
 {
@@ -30,14 +32,14 @@ class FetchStockData extends Command
     /**
      * Execute the console command.
      */
-    public function handle()
+    public function handle(StoreStockPriceAction $storeStockPricesAction)
     {
         $this->info('Fetching stock data...');
         $stockData = $this->fetchAllStocksPriceService->fetchAllStocksData();
 
-        // Example output to console, adjust according to your actual data structure
         foreach ($stockData as $data) {
-            $this->info("{$data['symbol']}: {$data['price']}");
+            $storeStockPricesAction($data['symbol'], $data['price'], $data['previous_price']);
         }
+        $this->info('Stock data has been updated successfully.');
     }
 }
