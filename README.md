@@ -45,17 +45,32 @@ The application's database schema is designed for efficient storage and retrieva
 
 - **Caching**: Frequently accessed data, such as the latest stock prices, is cached to reduce database load and mitigate rate limit issues from the 3rd party API.
 
+- **Scheduler**: The application includes a scheduler that performs tasks at regular intervals. Specifically, it calls the API once every minute to fetch the latest stock prices, stores this data in the database, and updates the cache with the new information. This ensures that the application maintains up-to-date stock price data without manual intervention.
+
 ### Caching Strategy
 
 To optimize the application's performance, caching is utilized for storing the latest stock price data. This reduces the need for frequent database queries and API calls, ensuring quick access to the most recent data.
 
-### API Integration
+### Third Party API Integration
 
 Real-time stock price data is fetched from the Alpha Vantage API, with robust error handling and rate limit management to ensure reliable data retrieval.
 
 ## API Documentation
 
 This project uses L5 Swagger to generate interactive API documentation.
+
+## API Endpoints
+
+The application provides several API endpoints to fetch stock data:
+
+- **Fetch the Latest Stock Price From Cache**:
+   - `GET /api/stocks?symbol={symbol}`: Fetches the latest price for a specific stock symbol from the cache.
+
+- **Fetch All Stock Prices From Cache**:
+   - `GET /api/stocks/all`: Fetches all stock prices from the cache.
+
+- **Report Based on Data**:
+   - `GET /api/stocks/report`: Returns reports based on the stock data, including percentage changes.
 
 ## Generating the Documentation
 
@@ -70,6 +85,22 @@ Once generated, the API documentation can be accessed at:
 ```
 http://localhost:8000/api/documentation
 ```
+
+## Web Report Interface
+
+In addition to the API, the application offers a web interface to view stock reports:
+
+- **Stock Reports**:
+   - Accessible at `http://localhost:8000/stocks/report`: Displays a detailed report of stocks, including the latest prices and percentage changes, with visual indicators for positive or negative changes.
+
+## Development and Testing
+
+For development and testing purposes, the application can use mock data instead of live API calls to fetch stock prices. This is controlled by an environment variable:
+
+- `USE_MOCK_STOCK_SERVICE=true`: (Default) Uses mock data for stock prices.
+- `USE_MOCK_STOCK_SERVICE=false`: Makes real API calls to fetch stock prices.
+
+Ensure this environment variable is set according to your needs in the `.env` file.
 
 ## Deployment
 
