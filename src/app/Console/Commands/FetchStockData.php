@@ -5,7 +5,7 @@ namespace App\Console\Commands;
 use App\Actions\StockPrices\StoreStockPriceAction;
 use App\Services\FetchAllStocksPriceService;
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Cache;
 
 class FetchStockData extends Command
 {
@@ -28,7 +28,6 @@ class FetchStockData extends Command
         parent::__construct();
     }
 
-
     /**
      * Execute the console command.
      */
@@ -39,6 +38,8 @@ class FetchStockData extends Command
 
         foreach ($stockData as $data) {
             $storeStockPricesAction($data['symbol'], $data['price'], $data['previous_price']);
+
+            Cache::put("stock_data_{$data['symbol']}", ['price' => $data['price'], 'previous_price' => $data['previous_price']], 60);
         }
         $this->info('Stock data has been updated successfully.');
     }

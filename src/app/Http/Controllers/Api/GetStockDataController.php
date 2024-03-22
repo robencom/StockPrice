@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Actions\StockPrices\FetchStockDataFromCacheAction;
+use App\DTO\StockSymbolDTO;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Services\FetchStockPriceService;
 use Illuminate\Http\JsonResponse;
+use App\Http\Requests\StockDataRequest;
 
 class GetStockDataController extends Controller
 {
@@ -14,15 +16,13 @@ class GetStockDataController extends Controller
     {
     }
 
-    public function __invoke(Request $request): JsonResponse
-    {
-        $validated = $request->validate([
-            'symbol' => 'required|exists:stocks,symbol',
-        ]);
+    public function __invoke(
+        StockDataRequest $stockDataRequest,
+        FetchStockDataFromCacheAction $fetchStockDataFromCacheAction
+    ): JsonResponse {
+        $stockSymbolDto = StockSymbolDTO::init($stockDataRequest->validated());
 
-        $stockSymbol = $validated['symbol'];
-
-        $stockData = $this->fetchStockPriceService->fetchStockData($stockSymbol);
+        $stockData = $fetchStockDataFromCacheAction($stockSymbolDto->getSymbol());
 
         return response()->json([
             'data' => $stockData
