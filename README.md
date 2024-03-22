@@ -17,7 +17,7 @@ These instructions will get you a copy of the project up and running on your loc
 A step by step series of instructions that tell you how to get a development environment running.
 
 1. Clone the repository:
-   git clone <repository-url>
+   git clone https://github.com/robencom/StockPrice.git
 
 2. Navigate to the project directory:
    cd StockPrice
@@ -30,11 +30,35 @@ The app will be available at http://localhost:8000
 
 ## Running the tests
 
-Explain how to run the automated tests for this system (to be filled out later).
+This application uses PHPUnit for unit and feature tests. To run the tests, execute the following command from the root of the project:
+
+```
+php artisan test
+```
+
+## Design Decisions
+tba
+
+## Design Decisions
+The application's database schema is designed for efficient storage and retrieval of stock price data. Key optimizations include:
+
+- **Indexing**: Indexes on `symbol` in the `stocks` table and `stock_id` in the `stock_prices` table ensure fast queries, especially beneficial for large datasets.
+
+- **Partitioning**: For handling extensive historical stock price data, partitioning the `stock_prices` table can improve performance and management.
+
+- **Caching**: Frequently accessed data, such as the latest stock prices, is cached to reduce database load and mitigate rate limit issues from the 3rd party API.
+
+### Caching Strategy
+
+To optimize the application's performance, caching is utilized for storing the latest stock price data. This reduces the need for frequent database queries and API calls, ensuring quick access to the most recent data.
+
+### API Integration
+
+Real-time stock price data is fetched from the Alpha Vantage API, with robust error handling and rate limit management to ensure reliable data retrieval.
 
 ## Deployment
 
-Add additional notes about how to deploy this on a live system (to be filled out later).
+This application follows standard Laravel deployment practices. For detailed instructions on deploying Laravel applications, refer to the official [Laravel deployment documentation](https://laravel.com/docs/deployment).
 
 ## Built With
 
@@ -43,7 +67,7 @@ Add additional notes about how to deploy this on a live system (to be filled out
 
 ## Authors
 
-* **Your Name**
+* Ruben Bourtoutian
 
 ## License
 
