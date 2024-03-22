@@ -8,7 +8,6 @@ use Illuminate\Http\JsonResponse;
 
 class GetAllStocksDataController extends Controller
 {
-
     public function __construct(protected FetchAllStocksPriceService $fetchAllStocksPriceService)
     {
     }

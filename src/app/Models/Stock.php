@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Ramsey\Uuid\Uuid;
 
@@ -15,6 +14,12 @@ class Stock extends Model
     public $incrementing = false;
 
     protected $keyType = 'uuid';
+
+    protected $fillable = [
+        'id',
+        'symbol',
+        'name',
+    ];
 
     protected static function booted()
     {

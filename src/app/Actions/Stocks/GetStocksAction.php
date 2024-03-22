@@ -3,7 +3,7 @@
 namespace App\Actions\Stocks;
 
 use App\Models\Stock;
-use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Collection;
 
 class GetStocksAction
 {
